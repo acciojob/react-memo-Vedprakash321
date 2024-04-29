@@ -89,24 +89,24 @@ const App = () => {
         <h1>React.useMemo</h1>
         <h2>My Todos</h2>
         {todos.map((todo, index) => {
-          return <p key={index}>{todo}</p>;
+          return <p id ="todo-0" key={index}>{todo}</p>;
         })}
         <button id="add-todo-btn" onClick={addTodo}>Add Todo</button>
       </div>
       <hr />
       <div>
         Count: {count}
-        <button id="calc" onClick={increment}>0</button>
-        <h2>Expensive Calculation</h2>
+        <button id="calc" onClick={increment}>+</button>
+        <h2 id="incr-cnt">Expensive Calculation</h2>
         {calculation}
       </div>
       <hr />
       <div>
         <h2>React.Memo</h2>
         <input type="text" id="skill-input" placeholder="Enter skill" />
-        <button id="item-jumbotron" onClick={() => addSkill(document.getElementById("skill-input").value)}>Add Skill</button>
+        <button id="skill-btn" onClick={() => addSkill(document.getElementById("skill-input").value)}>Add Skill</button>
       </div>
-      <SkillList skills={skills} />
+      <SkillList id="item-jumbotron" skills={skills} />
     </div>
   );
 };
