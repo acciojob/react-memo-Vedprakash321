@@ -97,7 +97,7 @@ const App = () => {
       <div>
         Count: {count}
         <button id="calc" onClick={increment}>+</button>
-        <h2 id="incr-cnt">Expensive Calculation</h2>
+        <h2 id="incr-cnt">0</h2>
         {calculation}
       </div>
       <hr />
