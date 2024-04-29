@@ -49,46 +49,75 @@
 import React, { useState, useMemo } from "react";
 import './../styles/App.css';
 
+// Functional component for displaying skills
+const SkillList = React.memo(({ skills }) => {
+  return (
+    <div>
+     
+      <ul>
+        {skills.map((skill, index) => (
+          <li key={index}>{skill}</li>
+        ))}
+      </ul>
+    </div>
+  );
+});
+
 const App = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+  const [skills, setSkills] = useState([]);
   
-    const [count, setCount] = useState(0);
-    const [todos, setTodos] = useState([]);
-    const calculation = useMemo(() => expensiveCalculation(count), [count]);
+  // Expensive calculation
+  const calculation = useMemo(() => expensiveCalculation(count), [count]);
 
-    const increment = () => {
-        setCount((c) => c + 1);
-    };
-    const addTodo = () => {
-        setTodos((t) => [...t, "New Todo"]);
-    };
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
 
- 
+  const addTodo = () => {
+    setTodos((t) => [...t, "New Todo"]);
+  };
+
+  const addSkill = (newSkill) => {
+    setSkills((prevSkills) => [...prevSkills, newSkill]);
+  };
 
   return (
     <div>
-       <div>
+      <div>
+        <h1>React.useMemo</h1>
         <h2>My Todos</h2>
         {todos.map((todo, index) => {
           return <p key={index}>{todo}</p>;
         })}
-        <button id="add-todo-btn" onClick={addTodo}>Add Todo</button> {/* Added id */}
+        <button id="add-todo-btn" onClick={addTodo}>Add Todo</button>
       </div>
       <hr />
       <div>
         Count: {count}
-        <button id="incr-cnt" onClick={increment}>+</button> {/* Added id */}
+        <button id="incr-cnt" onClick={increment}>+</button>
         <h2>Expensive Calculation</h2>
         {calculation}
       </div>
+      <hr />
+      <div>
+        <h2>React.Memo</h2>
+        <input type="text" id="skill-input" placeholder="Enter skill" />
+        <button id="add-skill-btn" onClick={() => addSkill(document.getElementById("skill-input").value)}>Add Skill</button>
+      </div>
+      <SkillList skills={skills} />
     </div>
-  )
-}
-
-const expensiveCalculation = (num) => {
-    console.log("Calculating...");
-    for (let i = 0; i < 1000000000; i++) {
-      num += 1;
-    }
-    return num;
+  );
 };
+
+// Expensive calculation function
+const expensiveCalculation = (num) => {
+  console.log("Calculating...");
+  for (let i = 0; i < 1000000000; i++) {
+    num += 1;
+  }
+  return num;
+};
+
 export default App;
