@@ -88,8 +88,8 @@ const App = () => {
       <div>
         <h1>React.useMemo</h1>
         <h2>My Todos</h2>
-        {todos.map((todo, index) => {
-          return <p id ="todo-${index}" key={index}>{todo}</p>;
+        {todos.map((todo, index=0) => {
+          return <p id ="todo-${index++}" key={index}>{todo}</p>;
         })}
         <button id="add-todo-btn" onClick={addTodo}>Add Todo</button>
       </div>
