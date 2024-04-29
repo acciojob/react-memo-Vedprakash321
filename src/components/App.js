@@ -54,9 +54,9 @@ const SkillList = React.memo(({ skills }) => {
   return (
     <div>
      
-      <ul>
+      <ul id="item-jumbotron">
         {skills.map((skill, index) => (
-          <li key={index}>{skill}</li>
+          <li key={index} id={`skill-&{index}`}>   {skill}</li>
         ))}
       </ul>
     </div>
@@ -89,15 +89,15 @@ const App = () => {
         <h1>React.useMemo</h1>
         <h2>My Todos</h2>
         {todos.map((todo, index) => {
-          return <p id ="todo-0" key={index}>{todo}</p>;
+          return <p id ="todo-${index}" key={index}>{todo}</p>;
         })}
         <button id="add-todo-btn" onClick={addTodo}>Add Todo</button>
       </div>
       <hr />
       <div>
         Count: {count}
-        <button id="calc" onClick={increment}>+</button>
-        <h2 id="incr-cnt">Expansive Calculation</h2>
+        <button id="incr-cnt" onClick={increment}>+</button>
+        <h2 >Expansive Calculation</h2>
         {calculation}
       </div>
       <hr />
@@ -115,7 +115,7 @@ const App = () => {
 const expensiveCalculation = (num) => {
   
   for (let i = 0; i < 1000000000; i++) {
-    num += i;
+    num += 1;
   }
   return num;
 };
