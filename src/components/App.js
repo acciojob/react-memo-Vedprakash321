@@ -103,10 +103,10 @@ const App = () => {
       <hr />
       <div>
         <h2>React.Memo</h2>
-        <input type="text" id="skill-input" placeholder="Enter skill" />
-        <button id="item-jumbotron" onClick={() => addSkill(document.getElementById("skill-input").value)}>Add Skill</button>
+        <input type="text" id="skill-input"  />
+        <button id="skill-btn" onClick={() => addSkill(document.getElementById("skill-input").value)}>Add Skill</button>
       </div>
-      <SkillList id="skill-btn" skills={skills} />
+      <SkillList id="item-jumbotron" skills={skills} />
     </div>
   );
 };
